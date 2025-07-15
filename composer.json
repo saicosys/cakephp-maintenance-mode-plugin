@@ -1,16 +1,21 @@
 {
     "name": "saicosys/cakephp-maintenance",
-    "description": "Saicosys/Maintenance plugin for CakePHP",
+    "description": "Saicosys Maintenance plugin for CakePHP 5",
+    "keywords": ["cakephp 5", "maintenance mode", "maintenance mode plugin"], 
     "type": "cakephp-plugin",
     "license": "MIT",
     "authors": [
         {
             "name": "Saicosys",
-            "homepage": "https://github.com/saicosys"
+            "email": "info@saicosys.com",
+            "homepage": "https://github.com/saicosys",
+            "role": "Author"
         },
         {
             "name": "Sandeep Kadyan",
-            "homepage": "https://github.com/sandeep-kadyan"
+            "email": "sandeepk@saicosys.com",
+            "homepage": "https://github.com/sandeep-kadyan",
+            "role": "Author"
         }
     ],
     "require": {
@@ -39,6 +44,14 @@
             "dealerdirect/phpcodesniffer-composer-installer": true
         },
         "sort-packages": true
+    },
+    "scripts": {
+        "check": [
+            "@test",
+            "@cs-check"
+        ],
+        "cs-check": "vendor/bin/phpcs --colors -p -s --extensions=php src/ tests/",
+        "cs-fix": "vendor/bin/phpcbf --colors -p -s --extensions=php src/ tests/"
     },
     "minimum-stability": "stable",
     "prefer-stable": true
