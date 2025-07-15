@@ -107,7 +107,8 @@ class MaintenanceMiddleware implements MiddlewareInterface
         $response = new Response();
         $view = new View();
         // Use custom template/variables if set, otherwise fallback to defaults
-        $template = $maintenance['template'] ?? 'element/maintenance';
+        $layout = $maintenance['view']['layout'] ?? 'Saicosys/Maintenance.default';
+        $template = $maintenance['view']['template'] ?? 'Saicosys/Maintenance.element/maintenance';
         $variables = $maintenance['variables'] ?? [
             'title' => __('System Maintenance'),
             'message' => __('We are upgrading our systems. Please try again later.'),
@@ -115,7 +116,7 @@ class MaintenanceMiddleware implements MiddlewareInterface
         $view->set('response', $variables);
         $view->setTheme('Saicosys/Maintenance');
         $view->setTemplate($template);
-        $view->setLayout('Saicosys/Maintenance.default');
+        $view->setLayout($layout);
         $content = $view->render();
 
         return $response
